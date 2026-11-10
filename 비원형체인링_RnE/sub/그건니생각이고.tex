@@ -1,0 +1,291 @@
+\section{연구 방법 및 절차}
+
+\subsection{모델의 범위와 가정}
+본 연구는 \texttt{model\_me.m}의 다리 운동 모형과 \texttt{optimize\_chainring.m}의 수치 최적화를 사용한다. 체인링이 바꾸는 고관절 각속도와 요구 토크를 계산하고, 그 순간 낼 수 있는 최대 토크에 대한 사용률을 부담으로 정의한다. 주요 목표는 같은 주행조건에서 부담의 변동을 줄이는 것이다.
+
+체인링과 다리 마디 등 모든 대상은 강체이며 체인은 질량이 없고 마찰이 무한대인 이상적인 줄이라 가정했다. 이후의 가정은 내용이 나오면 하는 것이 좋을 것 같다.
+\begin{enumerate}
+\item 체인링과 다리 마디는 강체이고 체인은 늘어나거나 미끄러지지 않는다. 체인 방향은 일정하며, 체인링의 형상은 볼록하다.
+\item 고관절 A와 크랭크축 O는 고정한다. 다리는 균일한 막대 두 개로 나타내고, 능동 토크는 고관절에서만 발생한다. 다리의 중력에 의한 위치에너지 변화와 관절 손실은 무시한다.
+\item 한 시점에는 페달을 미는 다리 하나만 계산한다. 반 바퀴마다 활성 다리를 교대하여 다리의 기하와 관성을 \(\pi\) 주기로 확장한다. 반대쪽 다리의 양의 구동 기여와 수동 저항은 이 단순화에서 계산하지 않는다.
+\item 주행속도 \(v_0>0\)와 저항력 \(f\geq0\)는 고정하고, 뒷바퀴와 스프로킷은 함께 회전한다고 가정한다. 따라서 체인 속도 \(V_0=r v_0/R\)는 일정하다.
+\item \(k=d\phi/d\theta\)가 0에 가까운 짧은 구간은 관성으로 통과하고 속도 변화는 무시한다고 근사한다. 그 구간은 부담 평가에서 제외한다. 이 가정은 별도의 동역학 검증을 완료했다는 뜻은 아니다.
+\end{enumerate}
+
+
+\begin{table}[!htb]
+\centering\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+기호 & 의미 & 예시 값\\\midrule
+\(L_1,L_2\) & 허벅지, 정강이 길이 & \(0.44,\ 0.45\) m\\
+\(\ell,d\) & 크랭크 길이, 고관절 높이 & \(0.17,\ 0.62\) m\\
+\(m_1,m_2\) & 허벅지, 정강이와 발의 질량 & \(8,\ 4\) kg\\
+\(I_c\) & 크랭크 및 체인링 관성 & \(0.05\) kg\(\cdot\)m\(^2\)\\
+\(\bar\rho,r,R\) & 평균 유효 반지름, 스프로킷 및 바퀴 반지름 & \(0.083,\ 0.025,\ 0.34\) m\\
+\(\tau_{\mathrm{iso}},\omega_{\max}\) & 최대 토크 모형의 매개변수 & \(200\) N\(\cdot\)m, \(15\) rad/s\\
+\(N,N_H\) & 각도 격자 수, 푸리에 최대 차수 & \(1440,\ 3\)\\
+\(k_{\min}\) & 관성 통과 구간의 기준 & \(0.05\)\\
+\bottomrule
+\end{tabular}
+\caption{계산에 사용할 매개변수의 예시. 인체 능력과 관성의 수치는 측정값이 아닌 가정값이다.}
+\label{tab:param}
+\end{table}
+\texttt{model\_me.m}의 \(v_0,f,r,R\) 초기값 0은 미설정 표시이다. 최적화 함수는 기본값을 자동으로 넣지 않으므로 계산 전에 필요한 값을 직접 정한다.
+
+\subsection{체인링과 모멘트팔}
+\begin{figure}[!tb]
+\centering\includegraphics[width=0.76\textwidth]{f_geom.pdf}
+\caption{모델의 기하 (\(\theta=290^\circ\), 실제 비율). (a) 고관절 A, 무릎 B, 페달 C, 크랭크축 O와 각 \(\alpha,\beta,\theta\). 그림에서 자전거 앞은 왼쪽이다. (b) 모멘트팔 \(\rho_\pm\)는 축에서 체인 줄까지 내린 수직선의 길이이다.}
+\label{fig:geom}
+\end{figure}
+크랭크축 O를 원점, 자전거 뒤쪽을 \(+x\)로 두고, 크랭크 각 \(\theta\)는 크랭크가 맨 아래일 때 0, 앞으로 달리는 방향이 \(+\)이다([Fig.~\ref{fig:geom}]). 체인링 모양은 체인 핀 중심이 지나는 피치곡선으로 나타낸다. 토크의 팔은 축에서 힘의 작용선까지의 수직거리이므로, 체인 장력의 팔은 축에서 접점까지의 거리 \(R\)이 아니라 축에서 체인 줄까지의 수직거리이다. 위쪽, 아래쪽 체인 줄까지의 수직거리를 모멘트팔 \(\rho_+\), \(\rho_-\)라 한다. 원형에서는 \(\rho_\pm=R\)이지만 비원형에서는 다르다.
+
+
+
+% ===== [D2] 모멘트팔 계산: 시작 =====
+\begin{dupA}{D2}{접점의 방향과 수직거리}
+체인링 몸체에 붙은 극좌표에서 피치곡선을 \(R(\varphi)\)로 쓴다. 접점에서 반지름 방향과 곡선의 법선이 이루는 각을 \(\gamma\)라 하면, 축에서 접선까지의 수직거리는 반지름을 법선 방향으로 내린 길이이다.
+\[
+\rho=R\cos\gamma .
+\]
+원이면 \(\gamma=0\)이라 \(\rho=R\)이고, 반지름이 각도에 따라 빨리 변할수록 \(\rho\)는 \(R\)보다 작아진다.
+\end{dupA}
+\begin{dupB}{D2}{극좌표 형상에서 모멘트팔}
+이론 문서는 접선벡터 \(\frac{d}{d\varphi}(R\mathbf e_r)=\frac{dR}{d\varphi}\mathbf e_r+R\,\mathbf e_\varphi\)와 위치벡터의 외적으로 모멘트팔을 구하였다.
+\[
+\rho=\left|R\mathbf e_r\times\frac{(dR/d\varphi)\mathbf e_r+R\mathbf e_\varphi}{\sqrt{(dR/d\varphi)^2+R^2}}\right|=\frac{R^2}{\sqrt{R^2+(dR/d\varphi)^2}} .
+\]
+접선벡터에서 반지름 방향 성분이 \(dR/d\varphi\), 수직 성분이 \(R\)이므로 \(\tan\gamma=(dR/d\varphi)/R\), 즉 \(\cos\gamma=R/\sqrt{R^2+(dR/d\varphi)^2}\)이다. 따라서 이 식은 가의 \(\rho=R\cos\gamma\)와 같다.
+\end{dupB}
+% ===== [D2] 끝 =====
+
+\subsection{속도의 연결과 운동방정식}
+% ===== [D1] 속도 연결: 시작 =====
+\begin{dupA}{D1}{같은 체인은 같은 속도}
+위쪽 체인은 한 줄의 곧은 줄이므로 앞뒤 끝에서 줄 방향 속도가 같다. 뒤 스프로킷은 원이라 체인 속도가 \(r_s\omega_s\)이다. 앞에서는 팔이 \(\rho_+\)인 지레가 돌리는 것과 같으므로 체인 속도가 \(\rho_+\omega\)이다. 따라서 자전거 속도가 일정해도 크랭크 각속도는
+\[
+\omega(\theta)=\frac{r_s\,\omega_s}{\rho_+(\theta)}
+\]
+로, 팔이 긴 각도에서 느리고 짧은 각도에서 빠르다.
+\end{dupA}
+\begin{dupB}{D1}{접선 방향 성분으로 쓴 속도 조건}
+접점의 회전 속도는 위치벡터에 수직이고 크기가 \(R\omega\)이다. 이를 체인 방향으로 사영하면 위치벡터에서 접선에 수직인 성분, 즉 \(\rho_+\)에 \(\omega\)를 곱한 값이 된다. 뒤 스프로킷에서는 같은 성분이 \(r_s\omega_s\)이므로 아래 식 (\ref{eq:1})을 얻는다. 가의 \(\omega=r_s\omega_s/\rho_+\)는 이 식을 \(\omega\)에 대해 푼 것이다.
+\end{dupB}
+% ===== [D1] 끝 =====
+\begin{equation}
+\rho_+(\theta)\,\omega=r_s\,\omega_s \label{eq:1}
+\end{equation}
+식 (\ref{eq:1})을 시간에 대해 미분하고 \(d\rho_+/dt=(d\rho_+/d\theta)\,\omega\)를 쓰면
+\begin{equation}
+\dot\omega_s=\frac{\rho_+}{r_s}\,\dot\omega+\frac{1}{r_s}\frac{d\rho_+}{d\theta}\,\omega^2 . \label{eq:2}
+\end{equation}
+앞축에는 회전 운동의 제2법칙을, 뒤축에는 바퀴 회전과 자전거 전체의 병진을 합친 일-에너지 정리를 적용한다. \(I_c\)는 크랭크와 체인링의 관성, \(I_r=I_w+MR_w^2\)는 바퀴 관성 \(I_w\)와 사람과 자전거의 질량 \(M\)을 뒤축 회전으로 환산한 관성이다.
+\begin{align}
+I_c\,\dot\omega&=\tau_p-\rho_+T_++\rho_-T_- , \label{eq:3}\\
+I_r\,\dot\omega_s&=r_s\,(T_+-T_-)-\tau_s . \label{eq:4}
+\end{align}
+식 (\ref{eq:4})에서 장력 차를 구해 식 (\ref{eq:3})에 넣고 식 (\ref{eq:2})를 대입하면 장력이 사라진 운동방정식을 얻는다.
+\begin{equation}
+\Bigl(I_c+I_r\frac{\rho_+^2}{r_s^2}\Bigr)\dot\omega=\tau_p-\frac{\rho_+}{r_s}\tau_s-I_r\frac{\rho_+}{r_s^2}\frac{d\rho_+}{d\theta}\,\omega^2+T_-(\rho_--\rho_+) \label{eq:5}
+\end{equation}
+왼쪽에는 뒤쪽 관성이 \((\rho_+/r_s)^2\)배로 더해지고, 오른쪽 셋째 항은 팔이 변할 때 뒤쪽을 가속하는 데 드는 토크이다.
+
+\subsection{다리 모델과 페달 토크}
+\begin{figure}[!tb]
+\centering\includegraphics[width=0.76\textwidth]{f_leg.pdf}
+\caption{오른다리의 힘 (\(60\) rpm, \(\theta=260^\circ\)). (a) 고관절 토크가 허벅지를 돌리면 정강이가 페달을 정강이 방향으로 민다. (b) 페달 힘 \(F\)를 크랭크에 수직인 \(F_t\)와 크랭크 방향 \(F_r\)로 나눈다.}
+\label{fig:leg}
+\end{figure}
+고관절 A와 크랭크축 O는 고정하고, 고관절만 토크 \(M_A\)를 내며 무릎과 발목은 핀으로 둔다. 허벅지 AB(\(L_1\))와 정강이 BC(\(L_2\))가 \(+x\)축과 이루는 각을 \(\alpha,\beta\)라 한다.
+
+% ===== [D3] 페달 토크: 시작 =====
+\begin{dupA}{D3}{힘과 팔로 보는 페달 토크}
+정강이는 무릎 B와 페달 C 두 점에서만 힘을 받는다. 무릎은 토크를 내지 않으므로 B를 중심으로 정강이의 토크를 더하면 C의 힘이 만드는 토크만 남고, 이것이 0이어야 한다. 따라서 페달에 걸리는 힘은 정강이 방향이다.
+\[
+\vec F=F\,\hat u,\qquad \hat u=\frac{\vec C-\vec B}{|\vec C-\vec B|}.
+\]
+A와 O에서 정강이 작용선까지의 수직거리를 \(d_A,d_O\)라 하면 허벅지의 토크 균형과 크랭크의 토크는
+\[
+M_A=F\,d_A,\qquad \tau_p=F\,d_O=\ell F_t
+\quad\Longrightarrow\quad \tau_p=M_A\,\frac{d_O}{d_A}
+\]
+이다. \(F_t\)는 \(F\) 중 크랭크에 수직인 성분이다([Fig.~\ref{fig:leg}]).
+\end{dupA}
+\begin{dupB}{D3}{일의 관계로 쓴 페달 토크}
+이론 문서는 다리에 에너지가 쌓이지 않으므로 고관절이 한 일과 크랭크로 간 일이 같다는 가상일 원리를 썼다\cite{lynch2017}.
+\[
+M_A\,d\alpha=\tau_p\,d\theta\quad\Longrightarrow\quad \tau_p=M_A\frac{d\alpha}{d\theta}.
+\]
+가와 같은지 확인한다. 정강이는 휘지 않으므로 B와 C의 속도를 정강이 방향 \(\hat u\)로 사영한 값이 같다. B는 A를 중심으로 각속도 \(\dot\alpha\)로, C는 O를 중심으로 \(\omega\)로 돌므로 그 사영은 각각 \(\dot\alpha\,d_A\), \(\omega\,d_O\)이다. 따라서 \(\dot\alpha\,d_A=\omega\,d_O\), 즉 \(d\alpha/d\theta=d_O/d_A\)이다. 1440개 각도에서 두 방법의 토크 차이는 \(10^{-14}\) N\(\cdot\)m 이하였다.
+\end{dupB}
+% ===== [D3] 끝 =====
+두 다리에 각각 적용해 더한다. 다리 좌표식을 미분하면
+\begin{equation}
+\tau_p=M_{A}\frac{d\alpha}{d\theta},\qquad \frac{d\alpha}{d\theta}=\frac{\ell\cos(\beta-\theta)}{L_1\sin(\beta-\alpha)} \label{eq:6}
+\end{equation}
+\(d\alpha/d\theta=0\)인 데드스팟은 오른다리 \(\theta=39.0^\circ\), \(221.5^\circ\)이며, 이때 정강이 작용선이 크랭크축을 지난다.
+
+\subsection{체인링 형상과 크랭크 운동}
+누적 크랭크 각도를 \(\theta(t)\)라 하고, 체인 접선까지의 수직거리인 유효 반지름을 \(\rho(\theta)\)라 한다. 코드의 \texttt{rho\_function}과 \texttt{rho\_prime}은 각각 다음 식과 그 해석적 미분을 평가한다.
+\begin{align}
+\rho(\theta)&=\bar\rho\left[1+\sum_{n=1}^{N_H}\{a_n\cos(n\theta)+b_n\sin(n\theta)\}\right],\label{eq:14}\\
+\rho'(\theta)&=\bar\rho\sum_{n=1}^{N_H}n\{-a_n\sin(n\theta)+b_n\cos(n\theta)\}.\label{eq:me-rhop}
+\end{align}
+\(a_n,b_n\)은 무차원 계수이며, 상수항을 고정하여 평균 유효 반지름을 \(\bar\rho\)로 유지한다.
+체인 속도 일치 조건에서
+\begin{equation}
+\dot\theta=\frac{V_0}{\rho},\qquad
+\ddot\theta=-\frac{V_0^2\rho'}{\rho^3},\qquad V_0=\frac{r v_0}{R}
+\label{eq:me-motion}
+\end{equation}
+를 얻는다. \texttt{theta}는 \(\theta(0)=0\)을 초기조건으로 \texttt{ode45}를 사용한다. 최적화는 각도별로 식 (\ref{eq:me-motion})을 직접 평가하므로 후보 형상마다 미분방정식을 다시 풀 필요가 없다. 누적 각도와 체인링 형상은 \(\pi\)로 접지 않는다. 따라서 다리 모형은 \(\pi\) 주기이지만, 일반 푸리에 체인링의 주기는 \(2\pi\)일 수 있다.
+
+\subsection{활성 다리의 기하와 관성}
+활성 다리의 각도는 \(\vartheta=\operatorname{mod}(\theta,\pi)\)로 둔다. \texttt{fourbar}에서 다음을 정의한다.
+\[
+P=2L_1(d+\ell\cos\vartheta),\quad Q=2L_1\ell\sin\vartheta,\quad
+K=L_1^2+\ell^2+d^2+2d\ell\cos\vartheta-L_2^2,
+\]
+\texttt{fourbar}가 사용하는 기하학적 해와 각도비는
+\begin{equation}
+\phi=\operatorname{atan2}(Q,P)+\arccos\frac{K}{\sqrt{P^2+Q^2}},\qquad
+k=\frac{K'-P'\cos\phi-Q'\sin\phi}{Q\cos\phi-P\sin\phi}
+\label{eq:me-fourbar}
+\end{equation}
+이다. 여기서 프라임은 활성 다리 각도에 대한 미분이다. \(P'=-2L_1\ell\sin\vartheta\), \(Q'=2L_1\ell\cos\vartheta\), \(K'=-2d\ell\sin\vartheta\)를 사용한다.
+
+다리의 운동에너지를 \(T_{\mathrm{leg}}=\tfrac12J(\vartheta)\dot\theta^2\)로 쓰면 \texttt{legJ}의 등가 관성은
+\begin{equation}
+J=\frac{m_1L_1^2}{3}k^2+
+\frac{m_2}{4}\{L_1^2k^2+\ell^2+2L_1\ell k\cos(\phi-\vartheta)\}
++\frac{m_2L_2^2}{12}\lambda_{\mathrm{leg}}^2
+\label{eq:me-inertia}
+\end{equation}
+이다. 정강이의 방향각 변화율 \(\lambda_{\mathrm{leg}}=(uv'-vu')/L_2^2\)에서
+\[
+\begin{aligned}
+u&=\ell\sin\vartheta-L_1\sin\phi,&v&=-\ell\cos\vartheta-d+L_1\cos\phi,\\
+u'&=\ell\cos\vartheta-L_1k\cos\phi,&v'&=\ell\sin\vartheta-L_1k\sin\phi
+\end{aligned}
+\]
+를 사용한다. 둘째 항의 \(1/4\)는 정강이 질량중심이 \((B+C)/2\)이기 때문에 생긴다. \(I_c\)는 \(J\)에 포함하지 않고 페달 토크에 한 번만 반영한다.
+
+\(J'\)는 \(h=2\pi/N\)으로 차분한다. 교대 경계에서 반대쪽 다리의 관성과 섞이지 않도록 \(\vartheta_+=\min(\vartheta+h,\pi-\epsilon)\), \(\vartheta_-=\max(\vartheta-h,0)\)으로 제한하여
+\[
+J'\approx\frac{J(\vartheta_+)-J(\vartheta_-)}{\vartheta_+-\vartheta_-}
+\]
+로 계산한다. 내부에서는 중앙차분이고 경계 근처에서는 비대칭 차분이다. 교대점에서는 주기 확장한 다리의 관성이 불연속일 수 있으므로 미분을 정의하지 않는다.
+
+\subsection{요구 토크와 순간 부담}
+\texttt{tau\_p}는 일정한 주행속도와 저항력에서 필요한 페달 토크를 계산한다.
+\begin{equation}
+\tau_p=\frac{\rho}{r}fR-I_c\frac{r^2v_0^2}{R^2\rho^3}\rho'.
+\label{eq:me-taup}
+\end{equation}
+다리의 입력 동력과 출력 동력 차이가 운동에너지 변화율과 같다는 관계에서
+\begin{equation}
+\tau_h=\frac{\tau_p+J\ddot\theta+\tfrac12J'\dot\theta^2}{k}
+\label{eq:me-tauh}
+\end{equation}
+를 얻는다. 이것이 \texttt{leg}의 계산식이다. 토크를 최대 능력에 비례하도록 자유롭게 배분하는 것이 아니라, 형상과 주행조건을 정하면 요구 토크가 결정된다.
+
+최대 고관절 토크를 각속도에 따라 감소하는 직선으로 가정하고 순간 부담을 다음처럼 정의한다.
+\begin{equation}
+\tau_{\max}(\dot\phi)=\max\left[\tau_{\mathrm{iso}}\left(1-\frac{|\dot\phi|}{\omega_{\max}}\right),0\right],\qquad
+u=\frac{|\tau_h|}{\tau_{\max}(\dot\phi)}.
+\label{eq:8}
+\end{equation}
+이는 토크 능력의 사용률이며 실제 피로나 대사 에너지를 직접 측정한 값은 아니다. 토크 방향과 자세에 따른 능력 차이는 생략한다. 최대 토크가 0인데 요구 토크가 0이 아니면 \(u=\infty\), 둘 다 0이면 \(u=0\)으로 정의한다.
+
+\subsection{관성 통과 구간과 목적함수}
+\(k=0\)에서는 유한한 고관절 토크가 순간적으로 크랭크에 일을 전달할 수 없다. 본 방법은 \(k_{\min}\)을 최적화 전에 고정하고
+\[
+\Omega_{\mathrm{coast}}=\{\theta:|k|<k_{\min}\},\qquad
+\Omega_{\mathrm{drive}}=\{\theta:|k|\geq k_{\min}\}
+\]
+로 나눈다. 부담은 구동 구간에서만 평가한다. 교대점도 별도로 제외하며, 관성 통과의 실제 감속과 교대 순간의 에너지 전달은 이 최적화로 검증되지 않는다.
+
+구동 구간의 시간 평균을 \(\langle g\rangle_t\)로 쓰면 \(dt=\rho\,d\theta/V_0\)이므로
+\begin{equation}
+\langle g\rangle_t=\frac{\int_{\Omega_{\mathrm{drive}}}\rho(\theta)g(\theta)\,d\theta}
+{\int_{\Omega_{\mathrm{drive}}}\rho(\theta)\,d\theta},\qquad
+\mu_u=\langle u\rangle_t,\quad \sigma_u=\sqrt{\langle(u-\mu_u)^2\rangle_t}.
+\label{eq:me-average}
+\end{equation}
+각도 평균이 아니라 이 시간 평균을 사용한다.
+
+\begin{table}[!htb]
+\centering\small
+\begin{tabular}{@{}L{19mm} L{41mm} L{80mm}@{}}
+\toprule
+선택 이름 & 목적함수 & 최소화하는 내용\\\midrule
+\texttt{peak} & \(\max u\) & 가장 부담이 큰 순간을 완화한다.\\
+\texttt{mean} & \(\mu_u\) & 평균적인 능력 사용률을 낮춘다.\\
+\texttt{rms} & \(\sqrt{\langle u^2\rangle_t}\) & 평균 부담과 높은 부담을 함께 줄인다.\\
+\texttt{flat} & \(\sigma_u\) & 부담의 변동을 직접 줄인다.\\
+\texttt{mixed} & \(\mu_u+\lambda\sigma_u\) & 평균과 평탄도의 비중을 \(\lambda\geq0\)으로 조절한다.\\
+\bottomrule
+\end{tabular}
+\caption{비교할 수 있는 부담 목적함수 후보. 모든 최대값과 평균은 구동 구간에서 계산한다.}
+\label{tab:me-objectives}
+\end{table}
+
+현재 코드는 \texttt{flat}만 사용한다. 부담이 높지만 일정한 해를 막기 위해 \(\mu_u\leq\mu_{u,\mathrm{circle}}\)을 함께 둔다. 이는 추가 설계 조건이며 같은 일을 한다는 사실만으로 자동 성립하지 않는다. 후보 \texttt{rms}는
+\[
+\langle u^2\rangle_t=\mu_u^2+\sigma_u^2
+\]
+를 줄이지만 표준편차만의 최소화를 보장하지는 않는다.
+
+현재 코드는 최대 부담이 1 이하라는 조건을 강제하지 않는다.
+
+\subsection{푸리에 계수의 수치 최적화}
+\subsubsection{형상 제약}
+\(\rho\)는 공간에서 고정된 체인 방향에 대한 지지함수를 회전각으로 나타낸 값이다. 따라서 볼록 피치곡선을 만들려면
+\begin{equation}
+\rho+\rho''>0
+\label{eq:13}
+\end{equation}
+이어야 한다. 기본 설정에서는
+\[
+0.45\bar\rho\leq\rho\leq1.55\bar\rho,\qquad
+\rho+\rho''\geq0.4\bar\rho
+\]
+를 사용한다. 이 조건은 지지함수의 최댓값/최솟값 비율을 제한하며, 임의 형상에서 실제 반지름의 지름비와 같은 뜻으로 사용하지 않는다.
+
+\subsubsection{이산화와 풀이}
+한 바퀴를 짝수 \(N\)개의 중점 \(\theta_j=2\pi(j+1/2)/N\)으로 나누어 교대점 \(0,\pi\)를 피한다. 기하 \(k_j\), 관성 \(J_j\), 미분 \(J'_j\)와 구동 구간 표시는 형상에 무관하므로 한 번만 계산한다. 각 계수 후보에서는 다음 순서로 평가한다.
+\begin{enumerate}
+\item 푸리에 식으로 \(\rho_j,\rho'_j\)를 계산한다.
+\item 식 (\ref{eq:me-motion})으로 \(\dot\theta_j,\ddot\theta_j\)를 구한다.
+\item 식 (\ref{eq:me-taup}), (\ref{eq:me-tauh})으로 \(\tau_{p,j},\tau_{h,j}\)를 계산한다.
+\item 구동 구간에서 최대 토크와 부담 \(u_j\)를 구한다.
+\item 시간 가중치 \(w_j=\rho_j/\sum_{i\in\Omega_{\mathrm{drive}}}\rho_i\)로 평균과 표준편차를 계산한다.
+\end{enumerate}
+기본 최적화 문제는
+\begin{equation}
+\begin{aligned}
+\min_{a_1,b_1,\ldots,a_{N_H},b_{N_H}}\quad &\sigma_u\\
+\text{s.t.}\quad &\mu_u\leq\mu_{u,\mathrm{circle}},\\
+&\rho_{\min}\leq\rho(\theta)\leq\rho_{\max},\quad
+\rho(\theta)+\rho''(\theta)\geq\kappa_{\min}\bar\rho
+\end{aligned}
+\label{eq:opt}
+\end{equation}
+이다. 수치적으로는 구동 격자에서 \(\tau_{\max}/\tau_{\mathrm{iso}}\geq10^{-6}\)을 추가하여 0으로 나누는 일을 방지한다. 탐색 중 분모를 같은 작은 값으로 제한하지만, 이 제약을 만족하는 해에서는 제한 전의 부담 정의와 같다.
+
+형상 제약은 격자 사이도 고려한다. \(A_n=\sqrt{a_n^2+b_n^2}\)일 때 반 격자 간격에서 생길 수 있는 변화의 상한은
+\[
+m_\rho=\frac{\pi}{N}\sum_n nA_n,\qquad
+m_\kappa=\frac{\pi}{N}\sum_n n|1-n^2|A_n
+\]
+이다. 정규화된 격자값에 이만큼의 여유를 두어 반지름과 곡률 제약을 검사한다. 반면 부담의 최대값과 능력 제약은 격자에서 평가하므로 격자 사이까지 보장하지 않는다.
+
+요구 토크와 최대 토크, 시간 가중치가 형상에 따라 변하므로 이 문제는 볼록 최적화로 취급하지 않는다. MATLAB의 \texttt{fmincon}을 사용하며 원형 계수에서 시작한다. 지역 탐색이므로 전역 최적해를 얻었다고 주장하지 않는다.
+
+\subsection{비교 지표와 검증 범위}
+코드는 원형과 최적 형상의 부담 표준편차와 푸리에 계수를 반환한다. 목적값 감소만으로 제외 구간의 감속이나 실제 피로 감소를 검증한 것으로 보지 않는다.
+
+현재 코드에는 체인 장력, 유한 축간거리, 프리휠 운동방정식, 실험 검증이 구현되어 있지 않으므로 이전 코드의 검증 수치나 개선율을 현재 방법의 결과로 옮기지 않는다.
+
+후속 계산에서는 \(N,N_H,k_{\min},\tau_{\mathrm{iso}},\omega_{\max}\)를 바꾸어 계수와 부담 지표의 민감도를 확인한다. 특히 \(k_{\min}\)은 계산상의 작은 오차가 아니라 구동을 생략하는 범위를 정하는 가정이다. 새 방법으로 재계산하기 전까지 기존 결과 절의 수치와 그림은 구형 모형의 결과로 구분한다.

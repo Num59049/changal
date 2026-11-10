@@ -1,0 +1,72 @@
+\usepackage{graphicx}
+\graphicspath{ {./figures/} } % Figure는 figures 폴더에 저장
+
+\usepackage{csquotes}
+
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tikzscale}
+\usepackage{tabularx}
+\usepackage{indentfirst}
+
+% ---- 이 보고서에서 추가한 설정 ----
+\usepackage{booktabs,array,float,enumitem}
+\usepackage{environ}
+\usepackage[most]{tcolorbox}
+\setlist{nosep,leftmargin=16pt,itemsep=1pt}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% 캡션: 청소년 과학창의연구 양식 ([Fig. 1], Table 1.)
+\DeclareCaptionLabelFormat{figbr}{[Fig.~#2]}
+\captionsetup{font=small,labelfont=bf,justification=justified}
+\captionsetup[figure]{labelformat=figbr,labelsep=space}
+\captionsetup[table]{name=Table,labelsep=period}
+\renewcommand{\figurename}{Fig.}
+
+% =====================================================================
+% 중복 식 블록
+%   같은 내용을 두 가지 방법으로 쓴 곳이다.
+%   dupA = 더 기본적이고 직관적인 유도 (먼저)
+%   dupB = 이론 문서(2026.10.31)의 원래 식, 그리고 dupA와 같다는 확인
+%   아래 \dupchoose 값을 바꾸면 고를 수 있다.
+%     both : 둘 다 보이고, 주황 상자로 표시 (지금)
+%     A    : 가만 남김 (상자 없이 본문처럼)
+%     B    : 나만 남김 (상자 없이 본문처럼)
+% =====================================================================
+\newcommand{\dupchoose}[2]{\csdef{dupsel-#1}{#2}}
+\dupchoose{D1}{both}   % 속도 연결: 체인 속도 / 크랭크 각속도
+\dupchoose{D2}{both}   % 모멘트팔: 수직거리 / 극좌표 공식
+\dupchoose{D3}{both}   % 페달 토크: 힘과 팔 / 일의 관계
+\dupchoose{D4}{both}   % 한 바퀴의 일: 에너지 / 등속 토크식 적분
+\dupchoose{D5}{both}   % 최적 모양: 같은 이득 조건 / 코시-슈바르츠
+\dupchoose{D6}{both}   % 체인 장력: 앞축 식 (3) / 다리 관성 포함 식
+
+\definecolor{dupc}{HTML}{C2650F}
+\tcbset{dupbox/.style={breakable,enhanced,colback=white,colframe=dupc,boxrule=0.7pt,arc=0pt,
+  left=5pt,right=5pt,top=2pt,bottom=2pt,fonttitle=\small\bfseries,coltitle=white,
+  before skip=6pt,after skip=6pt}}
+\newcommand{\dupSel}[1]{\ifcsundef{dupsel-#1}{both}{\csuse{dupsel-#1}}}
+\NewEnviron{dupA}[2]{%
+  \ifcsundef{dupsel-#1}{\def\dupS{both}}{\letcs\dupS{dupsel-#1}}%
+  \ifdefstring{\dupS}{both}{%
+    \begin{tcolorbox}[dupbox,colbacktitle=dupc,title={중복 #1-가 \quad 기본·직관적 유도: #2}]\BODY\end{tcolorbox}}{%
+  \ifdefstring{\dupS}{A}{\BODY\par}{}}}
+\NewEnviron{dupB}[2]{%
+  \ifcsundef{dupsel-#1}{\def\dupS{both}}{\letcs\dupS{dupsel-#1}}%
+  \ifdefstring{\dupS}{both}{%
+    \begin{tcolorbox}[dupbox,colbacktitle=dupc!65!black,title={중복 #1-나 \quad 이론 문서의 식과 같음: #2}]\BODY\end{tcolorbox}}{%
+  \ifdefstring{\dupS}{B}{\BODY\par}{}}}
+
+% 참고문헌 글자 크기
+\renewcommand*{\bibfont}{\small}
+\setlength{\bibitemsep}{0pt}
+
+% 그림이 빈칸 없이 들어가도록
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.8}
+\setcounter{totalnumber}{4}

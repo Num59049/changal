@@ -1,0 +1,507 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/apasortcite//global/global/global}
+    \entry{rankin2008}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=e03d3477d0e6bc6e9d7f4dfc245f34a5}{%
+           family={Rankin},
+           familyi={R\bibinitperiod},
+           given={Jeffery\bibnamedelima W.},
+           giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=19088ef4dc839e103e91029964651fd3}{%
+           family={Neptune},
+           familyi={N\bibinitperiod},
+           given={Richard\bibnamedelima R.},
+           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6735dd51d52ee3346be451cac1782f5f}
+      \strng{fullhash}{6735dd51d52ee3346be451cac1782f5f}
+      \strng{fullhashraw}{6735dd51d52ee3346be451cac1782f5f}
+      \strng{bibnamehash}{6735dd51d52ee3346be451cac1782f5f}
+      \strng{authorbibnamehash}{6735dd51d52ee3346be451cac1782f5f}
+      \strng{authornamehash}{6735dd51d52ee3346be451cac1782f5f}
+      \strng{authorfullhash}{6735dd51d52ee3346be451cac1782f5f}
+      \strng{authorfullhashraw}{6735dd51d52ee3346be451cac1782f5f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Biomechanics}
+      \field{title}{A theoretical analysis of an optimal chainring shape to maximize crank power during isokinetic pedaling}
+      \field{volume}{41}
+      \field{year}{2008}
+      \field{dateera}{ce}
+      \field{pages}{1494\bibrangedash 1502}
+      \range{pages}{9}
+    \endentry
+    \entry{leong2017}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=04614bdca05fdc31bf3eec3b623b2d58}{%
+           family={Leong},
+           familyi={L\bibinitperiod},
+           given={Chee-Hoi},
+           giveni={C\bibinithyphendelim H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=81a0c44db2badc9add00560a7ae87012}{%
+           family={Elmer},
+           familyi={E\bibinitperiod},
+           given={Steven\bibnamedelima J.},
+           giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dffe30aa29ab1f93d5eadddc040620fa}{%
+           family={Martin},
+           familyi={M\bibinitperiod},
+           given={James\bibnamedelima C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{24c6744afc03b9c28be12fad2686a438}
+      \strng{fullhash}{0d5b167676b525a4503dd9c98c5e7396}
+      \strng{fullhashraw}{0d5b167676b525a4503dd9c98c5e7396}
+      \strng{bibnamehash}{0d5b167676b525a4503dd9c98c5e7396}
+      \strng{authorbibnamehash}{0d5b167676b525a4503dd9c98c5e7396}
+      \strng{authornamehash}{24c6744afc03b9c28be12fad2686a438}
+      \strng{authorfullhash}{0d5b167676b525a4503dd9c98c5e7396}
+      \strng{authorfullhashraw}{0d5b167676b525a4503dd9c98c5e7396}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Applied Biomechanics}
+      \field{title}{Noncircular chainrings do not influence maximum cycling power}
+      \field{volume}{33}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{pages}{410\bibrangedash 418}
+      \range{pages}{9}
+    \endentry
+    \entry{candotti2007}{article}{}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=9da05bd9cbc858e5a7c9f922d83177c1}{%
+           family={Candotti},
+           familyi={C\bibinitperiod},
+           given={Cláudia\bibnamedelima Tarragô},
+           giveni={C\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=da7612c1445bbae5f56f9261765f56ec}{%
+           family={Ribeiro},
+           familyi={R\bibinitperiod},
+           given={Jerri},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6436a1b917ee7be06ded237150ba2c12}{%
+           family={Soares},
+           familyi={S\bibinitperiod},
+           given={Denise\bibnamedelima Paschoal},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c977d2e37b4042f477d8a736583b9650}{%
+           family={Oliveira},
+           familyi={O\bibinitperiod},
+           given={Álvaro\bibnamedelima Reischak},
+           giveni={Á\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0,
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=891e19f52519ead5b75b1ade21d207ac}{%
+           family={Loss},
+           familyi={L\bibinitperiod},
+           given={Jefferson\bibnamedelima Fagundes},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=080c3e5a22b7038ae1e995ebc4e78d7d}{%
+           family={Guimarães},
+           familyi={G\bibinitperiod},
+           given={Antônio\bibnamedelimb Carlos\bibnamedelima S.},
+           giveni={A\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{07c00f827d61620db49de5c2fa083db4}
+      \strng{fullhash}{20c6d739daa615c8b432be4dce67399c}
+      \strng{fullhashraw}{20c6d739daa615c8b432be4dce67399c}
+      \strng{bibnamehash}{20c6d739daa615c8b432be4dce67399c}
+      \strng{authorbibnamehash}{20c6d739daa615c8b432be4dce67399c}
+      \strng{authornamehash}{07c00f827d61620db49de5c2fa083db4}
+      \strng{authorfullhash}{20c6d739daa615c8b432be4dce67399c}
+      \strng{authorfullhashraw}{20c6d739daa615c8b432be4dce67399c}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Sports Biomechanics}
+      \field{title}{Effective force and economy of triathletes and cyclists}
+      \field{volume}{6}
+      \field{year}{2007}
+      \field{dateera}{ce}
+      \field{pages}{31\bibrangedash 43}
+      \range{pages}{13}
+    \endentry
+    \entry{bini2013}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=8f4be34ef9c91dfd64029e105d4a9a9e}{%
+           family={Bini},
+           familyi={B\bibinitperiod},
+           given={Rodrigo\bibnamedelima R.},
+           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=42c58b6575498441514aeea6c8708244}{%
+           family={Hume},
+           familyi={H\bibinitperiod},
+           given={Patria},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=88a1d328114cb277c1c780a7444c8d19}{%
+           family={Croft},
+           familyi={C\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f83ba884a4d984da647b75be4ddbe755}{%
+           family={Kilding},
+           familyi={K\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a7c9177db6b2fdd63fbf9e77fd95835f}
+      \strng{fullhash}{bc2c1930b76eb9ea2053263a42c22cc1}
+      \strng{fullhashraw}{bc2c1930b76eb9ea2053263a42c22cc1}
+      \strng{bibnamehash}{bc2c1930b76eb9ea2053263a42c22cc1}
+      \strng{authorbibnamehash}{bc2c1930b76eb9ea2053263a42c22cc1}
+      \strng{authornamehash}{a7c9177db6b2fdd63fbf9e77fd95835f}
+      \strng{authorfullhash}{bc2c1930b76eb9ea2053263a42c22cc1}
+      \strng{authorfullhashraw}{bc2c1930b76eb9ea2053263a42c22cc1}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Science and Cycling}
+      \field{title}{Pedal force effectiveness in cycling: A review of constraints and training effects}
+      \field{volume}{2}
+      \field{year}{2013}
+      \field{dateera}{ce}
+      \field{pages}{11\bibrangedash 24}
+      \range{pages}{14}
+    \endentry
+    \entry{aasvold2019}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=fb7db38d56df55580a2774f28a2505f6}{%
+           family={Aasvold},
+           familyi={A\bibinitperiod},
+           given={Lars\bibnamedelima Olav},
+           giveni={L\bibinitperiod\bibinitdelim O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=60af7d9cdf76daa19e9237b0d93d540e}{%
+           family={Ettema},
+           familyi={E\bibinitperiod},
+           given={Gertjan},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cdde495037db83d341c695b492b29fd6}{%
+           family={Skovereng},
+           familyi={S\bibinitperiod},
+           given={Knut},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{dd55eb8da63987ed7a9099bddc75496b}
+      \strng{fullhash}{08ed4f26d872808b59ce4a4d42cbea29}
+      \strng{fullhashraw}{08ed4f26d872808b59ce4a4d42cbea29}
+      \strng{bibnamehash}{08ed4f26d872808b59ce4a4d42cbea29}
+      \strng{authorbibnamehash}{08ed4f26d872808b59ce4a4d42cbea29}
+      \strng{authornamehash}{dd55eb8da63987ed7a9099bddc75496b}
+      \strng{authorfullhash}{08ed4f26d872808b59ce4a4d42cbea29}
+      \strng{authorfullhashraw}{08ed4f26d872808b59ce4a4d42cbea29}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{PLoS ONE}
+      \field{title}{Joint specific power production in cycling: The effect of cadence and intensity}
+      \field{volume}{14}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \field{pages}{e0212781}
+      \range{pages}{-1}
+    \endentry
+  \enddatalist
+  \datalist[entry]{none/global//global/global/global}
+    \entry{rankin2008}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=e03d3477d0e6bc6e9d7f4dfc245f34a5}{%
+           family={Rankin},
+           familyi={R\bibinitperiod},
+           given={Jeffery\bibnamedelima W.},
+           giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=19088ef4dc839e103e91029964651fd3}{%
+           family={Neptune},
+           familyi={N\bibinitperiod},
+           given={Richard\bibnamedelima R.},
+           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6735dd51d52ee3346be451cac1782f5f}
+      \strng{fullhash}{6735dd51d52ee3346be451cac1782f5f}
+      \strng{fullhashraw}{6735dd51d52ee3346be451cac1782f5f}
+      \strng{bibnamehash}{6735dd51d52ee3346be451cac1782f5f}
+      \strng{authorbibnamehash}{6735dd51d52ee3346be451cac1782f5f}
+      \strng{authornamehash}{6735dd51d52ee3346be451cac1782f5f}
+      \strng{authorfullhash}{6735dd51d52ee3346be451cac1782f5f}
+      \strng{authorfullhashraw}{6735dd51d52ee3346be451cac1782f5f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Biomechanics}
+      \field{title}{A theoretical analysis of an optimal chainring shape to maximize crank power during isokinetic pedaling}
+      \field{volume}{41}
+      \field{year}{2008}
+      \field{dateera}{ce}
+      \field{pages}{1494\bibrangedash 1502}
+      \range{pages}{9}
+    \endentry
+    \entry{leong2017}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=04614bdca05fdc31bf3eec3b623b2d58}{%
+           family={Leong},
+           familyi={L\bibinitperiod},
+           given={Chee-Hoi},
+           giveni={C\bibinithyphendelim H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=81a0c44db2badc9add00560a7ae87012}{%
+           family={Elmer},
+           familyi={E\bibinitperiod},
+           given={Steven\bibnamedelima J.},
+           giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dffe30aa29ab1f93d5eadddc040620fa}{%
+           family={Martin},
+           familyi={M\bibinitperiod},
+           given={James\bibnamedelima C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{24c6744afc03b9c28be12fad2686a438}
+      \strng{fullhash}{0d5b167676b525a4503dd9c98c5e7396}
+      \strng{fullhashraw}{0d5b167676b525a4503dd9c98c5e7396}
+      \strng{bibnamehash}{0d5b167676b525a4503dd9c98c5e7396}
+      \strng{authorbibnamehash}{0d5b167676b525a4503dd9c98c5e7396}
+      \strng{authornamehash}{24c6744afc03b9c28be12fad2686a438}
+      \strng{authorfullhash}{0d5b167676b525a4503dd9c98c5e7396}
+      \strng{authorfullhashraw}{0d5b167676b525a4503dd9c98c5e7396}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Applied Biomechanics}
+      \field{title}{Noncircular chainrings do not influence maximum cycling power}
+      \field{volume}{33}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{pages}{410\bibrangedash 418}
+      \range{pages}{9}
+    \endentry
+    \entry{candotti2007}{article}{}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=9da05bd9cbc858e5a7c9f922d83177c1}{%
+           family={Candotti},
+           familyi={C\bibinitperiod},
+           given={Cláudia\bibnamedelima Tarragô},
+           giveni={C\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=da7612c1445bbae5f56f9261765f56ec}{%
+           family={Ribeiro},
+           familyi={R\bibinitperiod},
+           given={Jerri},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6436a1b917ee7be06ded237150ba2c12}{%
+           family={Soares},
+           familyi={S\bibinitperiod},
+           given={Denise\bibnamedelima Paschoal},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c977d2e37b4042f477d8a736583b9650}{%
+           family={Oliveira},
+           familyi={O\bibinitperiod},
+           given={Álvaro\bibnamedelima Reischak},
+           giveni={Á\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0,
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=891e19f52519ead5b75b1ade21d207ac}{%
+           family={Loss},
+           familyi={L\bibinitperiod},
+           given={Jefferson\bibnamedelima Fagundes},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=080c3e5a22b7038ae1e995ebc4e78d7d}{%
+           family={Guimarães},
+           familyi={G\bibinitperiod},
+           given={Antônio\bibnamedelimb Carlos\bibnamedelima S.},
+           giveni={A\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{07c00f827d61620db49de5c2fa083db4}
+      \strng{fullhash}{20c6d739daa615c8b432be4dce67399c}
+      \strng{fullhashraw}{20c6d739daa615c8b432be4dce67399c}
+      \strng{bibnamehash}{20c6d739daa615c8b432be4dce67399c}
+      \strng{authorbibnamehash}{20c6d739daa615c8b432be4dce67399c}
+      \strng{authornamehash}{07c00f827d61620db49de5c2fa083db4}
+      \strng{authorfullhash}{20c6d739daa615c8b432be4dce67399c}
+      \strng{authorfullhashraw}{20c6d739daa615c8b432be4dce67399c}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Sports Biomechanics}
+      \field{title}{Effective force and economy of triathletes and cyclists}
+      \field{volume}{6}
+      \field{year}{2007}
+      \field{dateera}{ce}
+      \field{pages}{31\bibrangedash 43}
+      \range{pages}{13}
+    \endentry
+    \entry{bini2013}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=8f4be34ef9c91dfd64029e105d4a9a9e}{%
+           family={Bini},
+           familyi={B\bibinitperiod},
+           given={Rodrigo\bibnamedelima R.},
+           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=42c58b6575498441514aeea6c8708244}{%
+           family={Hume},
+           familyi={H\bibinitperiod},
+           given={Patria},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=88a1d328114cb277c1c780a7444c8d19}{%
+           family={Croft},
+           familyi={C\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f83ba884a4d984da647b75be4ddbe755}{%
+           family={Kilding},
+           familyi={K\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a7c9177db6b2fdd63fbf9e77fd95835f}
+      \strng{fullhash}{bc2c1930b76eb9ea2053263a42c22cc1}
+      \strng{fullhashraw}{bc2c1930b76eb9ea2053263a42c22cc1}
+      \strng{bibnamehash}{bc2c1930b76eb9ea2053263a42c22cc1}
+      \strng{authorbibnamehash}{bc2c1930b76eb9ea2053263a42c22cc1}
+      \strng{authornamehash}{a7c9177db6b2fdd63fbf9e77fd95835f}
+      \strng{authorfullhash}{bc2c1930b76eb9ea2053263a42c22cc1}
+      \strng{authorfullhashraw}{bc2c1930b76eb9ea2053263a42c22cc1}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Science and Cycling}
+      \field{title}{Pedal force effectiveness in cycling: A review of constraints and training effects}
+      \field{volume}{2}
+      \field{year}{2013}
+      \field{dateera}{ce}
+      \field{pages}{11\bibrangedash 24}
+      \range{pages}{14}
+    \endentry
+    \entry{aasvold2019}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=fb7db38d56df55580a2774f28a2505f6}{%
+           family={Aasvold},
+           familyi={A\bibinitperiod},
+           given={Lars\bibnamedelima Olav},
+           giveni={L\bibinitperiod\bibinitdelim O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=60af7d9cdf76daa19e9237b0d93d540e}{%
+           family={Ettema},
+           familyi={E\bibinitperiod},
+           given={Gertjan},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cdde495037db83d341c695b492b29fd6}{%
+           family={Skovereng},
+           familyi={S\bibinitperiod},
+           given={Knut},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{dd55eb8da63987ed7a9099bddc75496b}
+      \strng{fullhash}{08ed4f26d872808b59ce4a4d42cbea29}
+      \strng{fullhashraw}{08ed4f26d872808b59ce4a4d42cbea29}
+      \strng{bibnamehash}{08ed4f26d872808b59ce4a4d42cbea29}
+      \strng{authorbibnamehash}{08ed4f26d872808b59ce4a4d42cbea29}
+      \strng{authornamehash}{dd55eb8da63987ed7a9099bddc75496b}
+      \strng{authorfullhash}{08ed4f26d872808b59ce4a4d42cbea29}
+      \strng{authorfullhashraw}{08ed4f26d872808b59ce4a4d42cbea29}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{PLoS ONE}
+      \field{title}{Joint specific power production in cycling: The effect of cadence and intensity}
+      \field{volume}{14}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \field{pages}{e0212781}
+      \range{pages}{-1}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
