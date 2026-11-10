@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.9.5)  10 NOV 2026 08:53
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.9.5)  11 NOV 2026 01:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1288,22 +1288,33 @@ LaTeX Font Info:    Font shape `TU/UnDotum.ttf(1)/bx/n' in size <12> not availab
 \tf@lot=\write8
 \openout8 = `main.lot'.
 
- [4] (./sub/0abstract.tex) (./sub/1introduction.tex [1]) (./sub/2previous_study.tex) (./sub/3methodology.tex [2] [3] [4] [5] [6] [7] [8]) (./sub/4experiment.tex [9]
+ [4] (./sub/0abstract.tex) (./sub/1introduction.tex [1]) (./sub/2previous_study.tex) (./sub/3methodology.tex [2] [3] [4] [5] [6] [7] [8] [9]
+
+LaTeX Warning: Reference `eq:me-motion' on page 10 undefined on input line 215.
+
+
+LaTeX Warning: Reference `eq:me-taup' on page 10 undefined on input line 215.
+
+
+LaTeX Warning: Reference `eq:me-tauh' on page 10 undefined on input line 215.
+
+) (./sub/4experiment.tex [10]
 Overfull \hbox (63.69398pt too wide) in paragraph at lines 9--22
  [][] 
  []
 
-[10]
+[11]
 File: ./figures/f_shapes.pdf Graphic file (type pdf)
 <use ./figures/f_shapes.pdf>
 File: ./figures/f_film.pdf Graphic file (type pdf)
 <use ./figures/f_film.pdf>
- [11]
+ [12]
 File: ./figures/f_drive.pdf Graphic file (type pdf)
 <use ./figures/f_drive.pdf>
+ [13]
 File: ./figures/f_curves.pdf Graphic file (type pdf)
 <use ./figures/f_curves.pdf>
- [12] [13]
+ [14]
 Overfull \hbox (7.26306pt too wide) in paragraph at lines 90--92
 \TU/HCRBatang(0)/m/n/12 드 스 팟 $\OMS/cmsy/m/n/12 ^^F\OT1/cmr/m/n/12 10[]$ \TU/HCRBatang(0)/m/n/12 안 에 머 무 는 시 간 이 한 바 퀴 의 \TU/TimesNewRoman(0)/m/n/12 11.0% \TU/HCRBatang(0)/m/n/12 에 서 \TU/TimesNewRoman(0)/m/n/12 7.3% \TU/HCRBatang(0)/m/n/12 로 줄 어 든 데 서 온 다 ([\TU/TimesNewRoman(0)/m/n/12 Fig. []5[]\TU/HCRBatang(0)/m/n/12 ]). 
  []
@@ -1312,14 +1323,14 @@ File: ./figures/f_clock.pdf Graphic file (type pdf)
 <use ./figures/f_clock.pdf>
 ) (./sub/5conclusion.tex
 
-LaTeX Warning: Reference `eq:1' on page 14 undefined on input line 5.
+LaTeX Warning: Reference `eq:1' on page 15 undefined on input line 5.
 
-[14] [15])
+[15] [16])
 
 LaTeX Font Warning: Font shape `TU/HCRBatang(0)/m/it' undefined
 (Font)              using `TU/HCRBatang(0)/m/n' instead on input line 31.
 
-[16] [17] (./main.aux)
+[17] [18] (./main.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-08-10>
@@ -1332,18 +1343,18 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A0D2936A5F75B7FE0338C97EAFF7CBFC;2171.
+(rerunfilecheck)             Checksum: 52038DEFE5061BD7C0D450EB9962C151;2163.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44050 strings out of 467745
- 899545 string characters out of 5425967
- 1937689 words of memory out of 5000000
- 72496 multiletter control sequences out of 15000+600000
+ 44049 strings out of 467745
+ 899525 string characters out of 5425967
+ 1930547 words of memory out of 5000000
+ 72495 multiletter control sequences out of 15000+600000
  633167 words of font info for 124 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  100i,10n,107p,1216b,5225s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (21 pages).
+Output written on main.pdf (22 pages).

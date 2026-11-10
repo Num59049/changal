@@ -5,16 +5,16 @@
 \contentsline {subsection}{\numberline {2.1}선행 연구}{2}{subsection.2.1}%
 \contentsline {section}{\numberline {III}연구 방법 및 절차}{3}{section.3}%
 \contentsline {subsection}{\numberline {3.1}모델의 가정}{3}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}물리적인 식들의 유도}{4}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}최적의 체인링 찾기}{8}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}수치해석}{9}{subsection.3.4}%
-\contentsline {section}{\numberline {IV}연구 결과}{9}{section.4}%
-\contentsline {subsection}{\numberline {4.1}모양을 넓혀 가며 푼 결과}{10}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}결과 체인링}{10}{subsection.4.2}%
+\contentsline {subsection}{\numberline {3.2}물리적인 식의 유도}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}최적의 체인링 모양}{9}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}수치해석}{10}{subsection.3.4}%
+\contentsline {section}{\numberline {IV}연구 결과}{11}{section.4}%
+\contentsline {subsection}{\numberline {4.1}모양을 넓혀 가며 푼 결과}{11}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}결과 체인링}{12}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}모델 안의 힘}{12}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}효과 지수}{14}{subsection.4.4}%
-\contentsline {section}{\numberline {V}고찰}{15}{section.5}%
-\contentsline {subsection}{\numberline {5.1}선행연구와의 비교}{15}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}모양을 한 가지 꼴로 정하지 않은 의미}{15}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}한계}{16}{subsection.5.3}%
-\contentsline {section}{\numberline {VI}결론}{16}{section.6}%
+\contentsline {subsection}{\numberline {4.4}효과 지수}{15}{subsection.4.4}%
+\contentsline {section}{\numberline {V}고찰}{16}{section.5}%
+\contentsline {subsection}{\numberline {5.1}선행연구와의 비교}{16}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}모양을 한 가지 꼴로 정하지 않은 의미}{16}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}한계}{17}{subsection.5.3}%
+\contentsline {section}{\numberline {VI}결론}{17}{section.6}%
